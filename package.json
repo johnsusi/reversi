@@ -1,0 +1,19 @@
+{
+  "name": "reversi",
+  "productName": "reversi",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "cmake-js": "*",
+    "nan": "*"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "repository": "johnsusi/reversi",
+  "scripts": {
+    "install": "cmake-js rebuild",
+    "pretest": "cmake-js rebuild",
+    "test": "mocha --no-timeouts test/*.js"
+  }
+}

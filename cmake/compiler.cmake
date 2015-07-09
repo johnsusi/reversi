@@ -1,0 +1,22 @@
+include(CheckCXXCompilerFlag)
+
+check_cxx_compiler_flag("-std=c++1y" COMPILER_SUPPORTS_CXX1Y)
+
+if(COMPILER_SUPPORTS_CXX1Y)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+else()
+  check_cxx_compiler_flag("-std=c++11" COMPILER_SUPPORTS_CXX11)
+  if (COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  else()
+    check_cxx_compiler_flag("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+    if(COMPILER_SUPPORTS_CXX0X)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    endif()
+  endif()
+endif()
+
+check_cxx_compiler_flag("-stdlib=libc++" COMPILER_SUPPORTS_LIBCXX)
+if(COMPILER_SUPPORTS_LIBCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+endif()
