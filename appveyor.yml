@@ -9,6 +9,7 @@ configuration:
 build_script:
   - cmd: cmake --version
   - cmd: npm install
+  - cmd: dir build
   - cmd: npm test
 
 test: off
