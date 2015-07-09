@@ -5,31 +5,30 @@ project (reversi)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 include(compiler)
-include(platform)
 
-include_directories(
-  ${CMAKE_JS_INC}
-  src
+add_library(${PROJECT_NAME}
+  reversi.cpp reversi.h
+)
+
+
+if(DEFINED NODE_RUNTIME)
+
+  include(platform)
+
+  include_directories(${CMAKE_JS_INC})
+
+
+  add_library(${PROJECT_NAME}-wrapper SHARED
+    main.cpp
   )
 
+  set_target_properties(${PROJECT_NAME} PROPERTIES
+    PREFIX ""
+    SUFFIX ".node"
+    OUTPUT_NAME "${CMAKE_PROJECT_NAME}-${NODE_PLATFORM}-${NODE_ARCH}-${NODE_RUNTIME}-${NODE_RUNTIMEVERSION}"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+  )
 
-add_library(${PROJECT_NAME} SHARED
-  main.cpp
-)
+  target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB} )
 
-message("CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR}")
-
-set_target_properties(${PROJECT_NAME} PROPERTIES
-  PREFIX ""
-  SUFFIX ".node"
-  OUTPUT_NAME "${CMAKE_PROJECT_NAME}-${NODE_PLATFORM}-${NODE_ARCH}-${NODE_RUNTIME}-${NODE_RUNTIMEVERSION}"
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
-  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
-)
-
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
-
-target_link_libraries(${PROJECT_NAME}
-  ${CMAKE_JS_LIB}
-)
+endif()
