@@ -1,4 +1,10 @@
 language: node_js
+
 node_js:
   - "node"
   - "iojs"
+
+os:
+  - osx
+
+before_install:
