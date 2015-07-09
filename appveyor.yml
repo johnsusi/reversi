@@ -1,0 +1,12 @@
+platform:
+  - x64
+
+configuration:
+  - Release
+
+build_script:
+  - cmd: npm test
+
+test: off
+
+deploy: off
