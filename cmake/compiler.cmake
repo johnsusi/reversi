@@ -18,5 +18,5 @@ endif()
 
 check_cxx_compiler_flag("-stdlib=libc++" COMPILER_SUPPORTS_LIBCXX)
 if(COMPILER_SUPPORTS_LIBCXX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+#  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 endif()
