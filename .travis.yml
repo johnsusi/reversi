@@ -20,8 +20,9 @@ before_install:
 install:
   - npm install
   - bundle install
+
+script:
   - rake build
 
 after_success:
   - find . -name "*.node"
-  
