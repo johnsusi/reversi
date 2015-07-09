@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.1  )
 
 project (reversi)
 
@@ -22,13 +22,13 @@ if(DEFINED NODE_RUNTIME)
     main.cpp
   )
 
-  set_target_properties(${PROJECT_NAME} PROPERTIES
+  set_target_properties(${PROJECT_NAME}-wrapper PROPERTIES
     PREFIX ""
     SUFFIX ".node"
     OUTPUT_NAME "${CMAKE_PROJECT_NAME}-${NODE_PLATFORM}-${NODE_ARCH}-${NODE_RUNTIME}-${NODE_RUNTIMEVERSION}"
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
   )
 
-  target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB} )
+  target_link_libraries(${PROJECT_NAME}-wrapper ${CMAKE_JS_LIB} )
 
 endif()
