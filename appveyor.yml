@@ -5,6 +5,8 @@ configuration:
   - Release
 
 build_script:
+  - cmd: cmake --version
+  - cmd: npm install
   - cmd: npm test
 
 test: off
