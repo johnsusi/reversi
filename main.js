@@ -1,12 +1,11 @@
 var path = require('path');
 
-var engine = require("detect-engine");
-console.log(engine);
+var engine = 'node';
 if (process.versions['electron']) engine = 'electron';
 if (process.versions['nwjs'])     engine = 'nwjs';
 
 var version = process.versions[engine];
-if (!version) version = process.version;
+if (engine == 'node') engine = require("detect-engine");
 
 var name = ['reversi', process.platform, process.arch, engine, version].join('-');
 
