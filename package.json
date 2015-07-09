@@ -3,6 +3,8 @@
   "productName": "reversi",
   "version": "1.0.0",
   "license": "MIT",
+  "description": "Native module for analysing best moves in reversi",
+  "main": "main.js",
   "dependencies": {
     "cmake-js": "*",
     "nan": "*"

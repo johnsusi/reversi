@@ -1,12 +1,17 @@
 language: node_js
 
-compiler:
-  - gcc
-
 node_js:
   - "node"
+  - "iojs"
 
 before_install:
+  - $CC --version
   - wget http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.tar.gz
   - tar xvf cmake-3.2.3-Linux-x86_64.tar.gz
   - export PATH=$PWD/cmake-3.2.3-Linux-x86_64/bin:$PATH
+
+install:
+  - npm install
+
+test:
+  - npm test
