@@ -6,6 +6,7 @@
   "description": "Native module for analysing best moves in reversi",
   "main": "main.js",
   "dependencies": {
+    "bindings": "^1.2.1",
     "cmake-js": "*",
     "nan": "*"
   },
