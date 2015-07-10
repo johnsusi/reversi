@@ -10,12 +10,16 @@ os:
 env:
   - RUNTIME=electron RUNTIME_VERSION=0.29.2 ARCH=ia32
   - RUNTIME=electron RUNTIME_VERSION=0.29.2 ARCH=x64
-  - RUNTIME=electron RUNTIME_VERSION=0.28.3 ARCH=ia32
-  - RUNTIME=electron RUNTIME_VERSION=0.28.3 ARCH=x64
-  
+  - RUNTIME=node     RUNTIME_VERSION=0.12.6 ARCH=ia32
+  - RUNTIME=node     RUNTIME_VERSION=0.12.6 ARCH=x64
+  - RUNTIME=iojs     RUNTIME_VERSION=2.3.4  ARCH=ia32
+  - RUNTIME=iojs     RUNTIME_VERSION=2.3.4  ARCH=x64
+
+
 matrix:
   exclude:
-    - env: ARCH=ia32
+    - os: osx
+      env: ARCH=ia32
 
 before_install:
   - wget http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.tar.gz
