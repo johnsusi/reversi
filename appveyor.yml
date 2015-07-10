@@ -1,13 +1,19 @@
+os: Visual Studio 2015 RC
+
 platform:
   - x86
 
 configuration:
   - Release
 
+install:
+  - ps: Install-Product node ''
+
 build_script:
   - cmd: cmake --version
+  - cmd: node --version
+  - cmd: npm --version
   - cmd: npm install
-  - cmd: dir build
   - cmd: npm test
   - cmd: tree .\build
 
