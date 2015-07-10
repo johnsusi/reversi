@@ -7,7 +7,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(compiler)
 
 add_library(${PROJECT_NAME}
-  reversi.cpp reversi.h
+  src/reversi.cpp src/reversi.h
 )
 
 
@@ -19,7 +19,7 @@ if(DEFINED NODE_RUNTIME)
 
 
   add_library(${PROJECT_NAME}-wrapper SHARED
-    main.cpp
+    src/main.cpp
   )
 
   set_target_properties(${PROJECT_NAME}-wrapper PROPERTIES
