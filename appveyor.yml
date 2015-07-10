@@ -1,8 +1,6 @@
 platform:
   - x86
 
-os: Visual Studio 2015 RC
-
 configuration:
   - Release
 
@@ -11,6 +9,7 @@ build_script:
   - cmd: npm install
   - cmd: dir build
   - cmd: npm test
+  - cmd: tree .\build
 
 test: off
 
