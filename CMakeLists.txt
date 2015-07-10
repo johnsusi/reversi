@@ -22,6 +22,10 @@ if(DEFINED NODE_RUNTIME)
     src/main.cpp
   )
 
+  if( "${NODE_RUNTIME}" MATCHES "iojs")
+    set(NODE_RUNTIME "node")
+  endif()
+
   set_target_properties(${PROJECT_NAME}-wrapper PROPERTIES
     PREFIX ""
     SUFFIX ".node"
