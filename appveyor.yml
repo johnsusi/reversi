@@ -8,13 +8,14 @@ configuration:
 
 install:
   - ps: Install-Product node '0'
-  - cmd: npm install
+  - npm install
+  - bundle install
 
 test_script:
-  - cmd: npm test
+  - npm test
 
 build_script:
-  - cmd: rake build
-  - cmd: dir tmp\current_build
+  - rake build
+  - dir tmp\current_build
 
 deploy: off
