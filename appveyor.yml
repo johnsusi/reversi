@@ -8,16 +8,13 @@ configuration:
 
 install:
   - ps: Install-Product node '0'
+  - cmd: npm install
+
+test_script:
+  - cmd: npm test
 
 build_script:
-  - cmd: cmake --version
-  - cmd: node --version
-  - cmd: npm --version
-  - cmd: npm rebuild
-  - cmd: npm install
-  - cmd: npm test
-  - cmd: tree .\build
-
-test: off
+  - cmd: rake build
+  - cmd: dir tmp\current_build
 
 deploy: off
