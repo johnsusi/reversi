@@ -6,7 +6,7 @@
   "description": "Native module for analysing best moves in reversi",
   "main": "main.js",
   "dependencies": {
-    "bindings": "^1.2.1",
+    "bindings": "*",
     "cmake-js": "*",
     "nan": "*"
   },
@@ -15,7 +15,7 @@
   },
   "repository": "johnsusi/reversi",
   "scripts": {
-    "install": "cmake-js rebuild",
+    "install": "cmake-js build",
     "pretest": "cmake-js rebuild",
     "test": "mocha --no-timeouts test/*.js"
   }

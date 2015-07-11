@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'json_pure'
+gem 'json'
+gem 'npm', :github => 'johnsusi/gem-npm'

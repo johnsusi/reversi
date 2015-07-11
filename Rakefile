@@ -1,36 +1,22 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'json/pure'
 
 Bundler.require
 
-
+npm = Npm.new
+npm.install
 
 def build(runtime, version, arch)
-  build_dir = "build-#{runtime}-#{version}-#{arch}"
+  FileUtils.rm_rf('build')
+  fail unless system <<-SHELL
+      cmake-js rebuild \
+          --runtime=#{runtime} \
+          --runtime-version=#{version} \
+          --arch=#{arch}
+  SHELL
 
-  FileUtils.mkdir_p(build_dir)
-  Dir.chdir(build_dir) do
-
-    config = {
-      'private' => true,
-      'dependencies' => {
-        'reversi' => 'file:..'
-      },
-      'cmake-js' => {
-        'runtime'        => runtime,
-        'runtimeVersion' => version,
-        'arch'           => arch
-      }
-    }
-
-    File.open('package.json', 'w') do |file|
-      file.write( JSON.pretty_generate(config) )
-    end
-
-    fail unless system("npm install")
-
-  end
+  FileUtils.mkdir_p('tmp/current_build')
+  FileUtils.cp( Dir.glob(['build/*.node', 'build/Release/*.node']), 'tmp/current_build')
 end
 
 task :build do
